@@ -1,0 +1,23 @@
+{
+  "sections": [
+    {
+      "title": "File Requirements",
+      "content": [
+        "To add a molecule to the database, a valid structured data file (.sdf) that contains the molecule information must be uploaded.",
+        "Structured molecule files can be obtained from {*Ref:Molinstincts}.",
+        "The file must contain the molecule information in the correct format and must end with a .sdf extension.",
+        "Large files may take longer to upload and process."
+      ],
+      "references": [
+        {
+          "title": "Molinstincts",
+          "url": "https://www.molinstincts.com/sdf-mol-file/"
+        }
+      ]
+    },
+    {
+      "title": "Naming Requirements",
+      "content": "A name must be provided and the name of the molecule must not contain any spaces. If the name contain spaces, the molecule will not be added to the database."
+    }
+  ]
+}
