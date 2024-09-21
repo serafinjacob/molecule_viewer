@@ -1,7 +1,7 @@
 import MoleculeCard from "./card";
 
 interface MoleculeListProps {
-  molecules: { name: string; id: string }[];
+  molecules: { name: string; id: string }[] | [];
   setMolecule: (id: string) => void;
 }
 

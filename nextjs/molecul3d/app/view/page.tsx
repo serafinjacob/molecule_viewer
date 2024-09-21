@@ -6,7 +6,7 @@ import Sliders from "./components/molecule/sliders";
 import Molecule from "./components/molecule/view";
 
 export default function ViewPage() {
-  const [molecules, setMolecules] = useState([] as ({ name: string; id: string } | null)[]);
+  const [molecules, setMolecules] = useState([] as { name: string; id: string }[]);
   const [molecule, setMolecule] = useState(-1);
 
   const [showList, setShowList] = useState(true);
@@ -34,7 +34,7 @@ export default function ViewPage() {
         const data = await res.json();
 
         if (res.ok) {
-          const moleculeArray = [] as ({ name: string; id: string } | null)[];
+          const moleculeArray = [] as { name: string; id: string }[];
           for (const moleculeName in data.molecules) {
             if (data.molecules.hasOwnProperty(moleculeName)) {
               const molecule = data.molecules[moleculeName];
@@ -60,8 +60,8 @@ export default function ViewPage() {
     fetchMolecules();
   }, []);
 
-  const handleSetMolecule = (id: number) => {
-    setMolecule(id);
+  const handleSetMolecule = (id: string) => {
+    setMolecule(parseInt(id));
     setShowList(false);
   };
 

@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import MoleculeList from "./list";
 import Search from "./search";
 
-export default function ListViewPage({ molecules, setMolecule }: { molecules: any; setMolecule: any }) {
+interface ListViewPageProps {
+  molecules: { name: string; id: string }[];
+  setMolecule: (id: string) => void;
+}
+
+export default function ListViewPage({ molecules, setMolecule }: ListViewPageProps) {
   const [searching, setSearching] = useState(false);
-  const [results, setResults] = useState([] as ({ name: string; id: string } | any)[]);
+  const [results, setResults] = useState([] as { name: string; id: string }[]);
 
   useEffect(() => {
     setResults(molecules);

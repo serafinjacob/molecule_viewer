@@ -1,22 +1,17 @@
 import parse from "html-react-parser";
-import React, { use, useEffect } from "react";
+import React, { useEffect } from "react";
 
 export function SVG({ svg }: { svg: string }) {
   const [width, setWidth] = React.useState(100);
   const [height, setHeight] = React.useState(100);
-  const [viewBox, setViewBox] = React.useState([0, 0, 1000, 1000] as [
-    number,
-    number,
-    number,
-    number,
-  ]);
-  const [meetOrSlice, setMeetOrSlice] = React.useState(
+  const [viewBox, setViewBox] = React.useState([0, 0, 1000, 1000] as [number, number, number, number]);
+  /*const [meetOrSlice, setMeetOrSlice] = React.useState(
     "meet" as "meet" | "slice",
   );
   // xMin/Mid/Max YMin/Mid/Max
   const [align, setAlign] = React.useState(
     "xMidYMid" as "xMinYMin" | "xMidYMid" | "xMaxYMax",
-  );
+  );*/
 
   const createSafeSVG = (svg: string) => {
     // use the passed in width and height, scale the svg to fit the parent element
