@@ -6,11 +6,11 @@ import Sliders from "./components/molecule/sliders";
 import Molecule from "./components/molecule/view";
 
 export default function ViewPage() {
-  const [molecules, setMolecules] = useState([] as ({ name: string; id: string } | any)[]);
+  const [molecules, setMolecules] = useState([] as ({ name: string; id: string } | null)[]);
   const [molecule, setMolecule] = useState(-1);
 
   const [showList, setShowList] = useState(true);
-  const [name, setName] = useState("");
+  const [name] = useState("");
 
   const [roll, setRoll] = useState(0);
   const [pitch, setPitch] = useState(0);
@@ -34,7 +34,7 @@ export default function ViewPage() {
         const data = await res.json();
 
         if (res.ok) {
-          const moleculeArray = [] as ({ name: string; id: string } | any)[];
+          const moleculeArray = [] as ({ name: string; id: string } | null)[];
           for (const moleculeName in data.molecules) {
             if (data.molecules.hasOwnProperty(moleculeName)) {
               const molecule = data.molecules[moleculeName];

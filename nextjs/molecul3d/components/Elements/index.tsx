@@ -22,7 +22,7 @@ export class Element {
     radius: number,
     color1: string,
     color2: string,
-    color3: string,
+    color3: string
   ) {
     this.name = name;
     this.symbol = symbol;
@@ -35,9 +35,7 @@ export class Element {
 }
 
 export function Add() {
-  const [element, setElement] = useState<Element>(
-    new Element("", "", 0, 0, "", "", ""),
-  );
+  const [element] = useState<Element>(new Element("", "", 0, 0, "", "", ""));
 
   return (
     <div className="flex w-full flex-col items-center justify-center">
@@ -69,9 +67,7 @@ export function Add() {
               variant="filled"
               color="default"
               className="rounded-xl"
-              onChange={(e) =>
-                (element.atomicNumber = parseInt(e.target.value))
-              }
+              onChange={(e) => (element.atomicNumber = parseInt(e.target.value))}
             />
 
             <FloatingLabel
@@ -110,10 +106,7 @@ export function ElementCard({ element }: { element: Element }) {
         {element.name.charAt(0).toUpperCase() + element.name.slice(1)}
       </h2>
       <div className="flex flex-col">
-        <div
-          className="justify-left flex flex-row items-center pl-4 "
-          title="Radius"
-        >
+        <div className="justify-left flex flex-row items-center pl-4 " title="Radius">
           <CiRuler />
           {element.radius}
         </div>
@@ -127,22 +120,19 @@ export function ElementCard({ element }: { element: Element }) {
   );
 }
 
+interface ElementInterface {
+  name: string;
+  id: string;
+}
+
 export function Elements({
   elements,
   showAddElement,
 }: {
-  elements: Element[];
+  elements: ElementInterface[];
   showAddElement: (value: boolean) => void;
 }) {
-  const testElement = new Element(
-    "Testing",
-    "Te",
-    12,
-    10,
-    "#34eb49",
-    "#176e96",
-    "#961728",
-  );
+  const testElement = new Element("Testing", "Te", 12, 10, "#34eb49", "#176e96", "#961728");
 
   const setShowAddElement = (value: boolean) => {
     showAddElement(value);
@@ -155,14 +145,9 @@ export function Elements({
         <ElementCard element={testElement} />
         <ElementCard element={testElement} />
         {elements.map((element, index) => (
-          <ElementCard key={index} element={element} />
+          <ElementCard key={index} element={testElement} />
         ))}
-        <Button
-          color="indigo"
-          onClick={() => setShowAddElement(true)}
-          className="p-2"
-          title="Add Element"
-        >
+        <Button color="indigo" onClick={() => setShowAddElement(true)} className="p-2" title="Add Element">
           <GoPlus className="text-4xl" />
         </Button>
       </div>

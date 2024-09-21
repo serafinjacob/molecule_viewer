@@ -1,6 +1,7 @@
 import { Button } from "flowbite-react";
 import { FaArrowRight } from "react-icons/fa";
 import type { CustomFlowbiteTheme } from "flowbite-react";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -29,7 +30,12 @@ export default function Home() {
             </div>
           </div>
           <div className="hidden lg:col-span-5 lg:mt-0 lg:flex">
-            <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png" alt="mockup" />
+            <Image
+              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png"
+              alt="Molecule"
+              width={500}
+              height={500}
+            />
           </div>
         </div>
       </section>

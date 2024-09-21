@@ -5,10 +5,14 @@ import { Elements } from "@/components/Elements";
 import { Button } from "flowbite-react";
 import { ImCross } from "react-icons/im";
 
+interface ElementInterface {
+  name: string;
+  id: string;
+}
+
 export default function EditPage() {
-  const [elements, setElements] = useState([]);
+  const [elements, setElements] = useState([] as ElementInterface[]);
   const [showAddElement, setShowAddElement] = useState(false);
-  const [showElement, setShowElement] = useState(false);
 
   useEffect(() => {
     const storedElements = JSON.parse(localStorage.getItem("elements") || "[]");
@@ -28,7 +32,7 @@ export default function EditPage() {
         const data = await res.json();
 
         if (res.ok) {
-          const elements = [] as any;
+          const elements = [];
           for (const element_name in data.elements) {
             if (data.elements.hasOwnProperty(element_name)) {
               const element = data.elments[element_name];

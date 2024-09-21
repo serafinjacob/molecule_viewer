@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FloatingLabel, Button, FileInput, Spinner } from "flowbite-react";
 
 export default function AddPage() {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
 
   const [name, setName] = useState("");
 
@@ -11,7 +11,13 @@ export default function AddPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) {
+      setFile(null);
+      setError("Please select a file");
+      setSuccess("");
+      return;
+    }
     // file must be selected, last 4 characters must be .sdf
     const selectedFile = e.target.files[0];
     if (selectedFile) {
