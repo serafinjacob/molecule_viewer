@@ -15,13 +15,18 @@ export async function upload(state: FormState, formData: FormData): Promise<Form
   }
 
   const file = formData.get("mol-file") as File;
-  const { atoms, bonds } = await parse(file);
 
-  const result = await save({ name: validation.data.name, atoms, bonds });
+  try {
+    const { atoms, bonds } = await parse(file);
+    const result = await save({ name: validation.data.name, atoms, bonds });
 
-  if (result.success) {
-    return { success: result.success };
-  } else if (result.error) {
-    return { errors: { file: [result.error] } };
+    if (result.success) {
+      return { success: result.success };
+    } else if (result.error) {
+      return { errors: { file: [result.error] } };
+    }
+  } catch (e) {
+    const error = e as Error;
+    return { errors: { file: [error.message] } };
   }
 }

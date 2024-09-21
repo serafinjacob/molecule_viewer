@@ -28,7 +28,7 @@ export async function save({ name, atoms, bonds }: saveArgs) {
 
         await client.sql`INSERT INTO moleculeatom (molecule_id, atom_id) VALUES (${molecule_id}, ${atom_id})`;
       })
-    ).then(() => console.log("Atoms saved"));
+    );
 
     // store bonds
     await Promise.all(
@@ -40,14 +40,14 @@ export async function save({ name, atoms, bonds }: saveArgs) {
 
         await client.sql`INSERT INTO moleculebond (molecule_id, bond_id) VALUES (${molecule_id}, ${bond_id})`;
       })
-    ).then(() => console.log("Bonds saved"));
+    );
 
     await client.sql`COMMIT`;
     client.release();
-    return { success: "Molecule saved" };
+    return { success: "Molecule saved. " };
   } catch (e) {
     await client.sql`ROLLBACK`;
     client.release();
-    return { error: "Transaction rolled back. " + e };
+    return { error: "Upload Failed. " };
   }
 }

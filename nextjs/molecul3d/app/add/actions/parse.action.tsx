@@ -13,7 +13,7 @@ export async function parse(file: File) {
     .map((n) => parseInt(n));
 
   if (isNaN(numAtoms) || isNaN(numBonds)) {
-    throw new Error("Error parsing file");
+    throw new Error("Number of atoms and bonds not found correctly.");
   }
 
   const atoms = [];
@@ -23,7 +23,7 @@ export async function parse(file: File) {
     const [x, y, z, symbol] = lines[i].trim().split(/\s+/);
 
     if (isNaN(parseFloat(x)) || isNaN(parseFloat(y)) || isNaN(parseFloat(z))) {
-      throw new Error("Error parsing file");
+      throw new Error("Error parsing x, y, z coordinates and symbol");
     }
 
     atoms.push({
@@ -38,7 +38,7 @@ export async function parse(file: File) {
     const [from, to, num_bonds] = lines[i].trim().split(/\s+/);
 
     if (isNaN(parseInt(from)) || isNaN(parseInt(to)) || isNaN(parseInt(num_bonds))) {
-      throw new Error("Error parsing file");
+      throw new Error("Error parsing from, to, and num_bonds");
     }
 
     bonds.push({
@@ -49,7 +49,7 @@ export async function parse(file: File) {
   }
 
   if (atoms.length !== numAtoms || bonds.length !== numBonds) {
-    throw new Error("Error parsing file");
+    throw new Error("Error parsing atoms and bonds");
   }
 
   return { atoms, bonds };
