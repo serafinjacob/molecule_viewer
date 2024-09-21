@@ -1,5 +1,5 @@
 import HelpContainer from "@/components/HelpContainer";
-import help from "./help.json";
+import help from "./data/help.json";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
