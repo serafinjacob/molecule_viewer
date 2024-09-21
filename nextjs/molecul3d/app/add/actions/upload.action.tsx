@@ -21,7 +21,7 @@ export async function upload(state: FormState, formData: FormData): Promise<Form
 
   if (result.success) {
     return { success: result.success };
-  } else {
+  } else if (result.error) {
     return { errors: { file: [result.error] } };
   }
 }
