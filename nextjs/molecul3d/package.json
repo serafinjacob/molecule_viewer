@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vercel/postgres": "^0.10.0",
     "flowbite-react": "^0.10.1",
     "html-react-parser": "^5.1.15",
     "next": "14.2.8",
