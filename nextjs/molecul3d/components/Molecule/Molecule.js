@@ -35,8 +35,8 @@ export class Parser {
             data[i].y2,
             data[i].len,
             data[i].dx,
-            data[i].dy,
-          ),
+            data[i].dy
+          )
         );
       }
     }
@@ -70,7 +70,6 @@ export class Molecule {
       if (this.items[i] instanceof Atom) {
         const x = this.items[i].x;
         const y = this.items[i].y;
-        const z = this.items[i].z;
 
         this.items[i].x =
           cos_yaw * cos_pitch * x +
@@ -116,7 +115,9 @@ export class Atom {
 
   toSVG() {
     if (this.element in radius && this.element in element_name) {
-      return `  <circle cx="${this.x * 100.0 + offsetx}" cy="${this.y * 100.0 + offsety}" r="${radius[this.element]}" fill="url(#${element_name[this.element]})"/>\n`;
+      return `  <circle cx="${this.x * 100.0 + offsetx}" cy="${this.y * 100.0 + offsety}" r="${
+        radius[this.element]
+      }" fill="url(#${element_name[this.element]})"/>\n`;
     } else {
       return `  <circle cx="${this.x * 100.0 + offsetx}" cy="${this.y * 100.0 + offsety}" r="30" fill="aqua"/>\n`;
     }

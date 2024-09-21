@@ -2,11 +2,11 @@ import { RangeSlider } from "flowbite-react";
 
 interface SlidersProps {
   roll: number;
-  setRoll: any;
+  setRoll: (roll: number) => void;
   pitch: number;
-  setPitch: any;
+  setPitch: (pitch: number) => void;
   yaw: number;
-  setYaw: any;
+  setYaw: (yaw: number) => void;
 }
 
 export default function Sliders({ roll, setRoll, pitch, setPitch, yaw, setYaw }: SlidersProps) {

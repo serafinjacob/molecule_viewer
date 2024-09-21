@@ -1,12 +1,18 @@
 "use client";
-import React, { use, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FloatingLabel } from "flowbite-react";
 
+export interface Item {
+  [key: string]: string | number;
+  name: string;
+  id: string;
+}
+
 interface SearchProps {
-  items: any[];
+  items: Item[];
   search_by: string;
-  setResults: any;
-  setSearching: any;
+  setResults: (results: Item[]) => void;
+  setSearching: (searching: boolean) => void;
 }
 
 export default function Search({ items, search_by, setResults, setSearching }: SearchProps) {
@@ -17,12 +23,13 @@ export default function Search({ items, search_by, setResults, setSearching }: S
       setResults(items);
     } else {
       setSearching(true);
-      const filteredItems = items.filter((item) => item[search_by].toLowerCase().includes(searchTerm.toLowerCase()));
+      const filteredItems = items.filter((item) => {
+        return item[search_by].toString().toLowerCase().includes(searchTerm.toLowerCase());
+      });
       setResults(filteredItems);
     }
     setSearching(false);
-  }, [searchTerm]);
-
+  }, [searchTerm, items, search_by, setResults, setSearching]);
   return (
     <div className="absolute right-0">
       <FloatingLabel

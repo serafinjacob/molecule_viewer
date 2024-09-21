@@ -30,7 +30,7 @@ export default function Molecule({ molecule_id, yaw, pitch, roll }: MoleculeProp
     if (!molecule) return;
     molecule.rotate(yaw, pitch, roll);
     setSVG(molecule.toSVG());
-  }, [roll, pitch, yaw]);
+  }, [roll, pitch, yaw, molecule]);
 
   return <>{svg && <SVG svg={svg} />}</>;
 }
