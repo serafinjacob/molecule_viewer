@@ -9,7 +9,7 @@ export async function parse(file: File) {
   // first two numbers encountered on line three is the number of atoms and bonds
   const [numAtoms, numBonds] = lines[3]
     .trim()
-    .split(" ")
+    .split(/\s+/)
     .map((n) => parseInt(n));
 
   if (isNaN(numAtoms) || isNaN(numBonds)) {
