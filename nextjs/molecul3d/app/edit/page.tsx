@@ -1,75 +1,21 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { Add as AddElement } from "@/components/Elements";
-import { Elements } from "@/components/Elements";
-import { Button } from "flowbite-react";
-import { ImCross } from "react-icons/im";
+import React, { useState } from "react";
 
-interface ElementInterface {
-  name: string;
-  id: string;
-}
+import ElementListView from "./components/elements-list-view";
+import AddElement from "./components/add-element";
+import EditElement from "./components/edit-element";
 
-export default function EditPage() {
-  const [elements, setElements] = useState([] as ElementInterface[]);
-  const [showAddElement, setShowAddElement] = useState(false);
+import { PageState } from "./types/page.type";
 
-  useEffect(() => {
-    const storedElements = JSON.parse(localStorage.getItem("elements") || "[]");
-    if (storedElements.length > 0) {
-      setElements(storedElements);
-    }
-    const fetchElements = async () => {
-      //update elements
-      try {
-        const res = await fetch("https://tgq0x7swce.execute-api.us-east-1.amazonaws.com/Prod/getElements", {
-          method: "GET",
-          credentials: "include",
-          headers: {
-            Accept: "application/json",
-          },
-        });
-        const data = await res.json();
-
-        if (res.ok) {
-          const elements = [];
-          for (const element_name in data.elements) {
-            if (data.elements.hasOwnProperty(element_name)) {
-              const element = data.elments[element_name];
-              elements.push({
-                name: element_name,
-                id: element.element_id,
-              });
-            } else {
-              console.log("Element name not found.");
-            }
-          }
-          setElements(elements);
-          // store elements in local storage
-          localStorage.setItem("elements", JSON.stringify(elements));
-        } else {
-          console.log(data);
-        }
-      } catch (e) {
-        console.log("Error getting elements.", e);
-      }
-    };
-
-    fetchElements();
-  }, []);
+export default function Page() {
+  const [show, setShow] = useState<PageState>("list");
+  const [elementId, setElementId] = useState<number | null>(null);
 
   return (
-    <div className="relative m-5 p-5">
-      {showAddElement ? (
-        <>
-          <Button onClick={() => setShowAddElement(false)} color="indigo" className="absolute right-0 top-0 m-5">
-            <ImCross />
-          </Button>
-          <AddElement />
-        </>
-      ) : (
-        <Elements elements={elements} showAddElement={setShowAddElement} />
-      )}
+    <div className="flex flex-col m-5 p-5 justify-center">
+      {show === "list" && <ElementListView setShow={setShow} setElementId={setElementId} />}
+      {show === "element" && <EditElement setShow={setShow} elementId={elementId} />}
+      {show === "add" && <AddElement setShow={setShow} />}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import HelpContainer from "@/components/HelpContainer";
-import help from "./help.json";
+import help from "./data/help.json";
 
 // help.json has the sections and content for the help page, need to read this file and pass the data to the HelpContainer component
 
