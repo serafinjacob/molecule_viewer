@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           className={`${geistSans.variable} ${geistMono.variable} antialiased w-full h-full min-h-screen justify-between flex flex-col bg-slate-200 dark:bg-slate-900 dark:text-slate-200 text-slate-800`}
         >
           <RootNavbar />
-          <div className="flex flex-col flex-grow max-w-screen-xl mx-auto w-full">{children}</div>
+          <div className="flex flex-grow max-w-screen-xl mx-auto w-full h-full">{children}</div>
           <Footer />
         </body>
       </Flowbite>

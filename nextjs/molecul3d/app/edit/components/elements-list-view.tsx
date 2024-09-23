@@ -6,10 +6,10 @@ import { PageState } from "../types/page.type";
 
 interface ElementListViewProps {
   setShow: (state: PageState) => void;
-  setElementId: (id: number) => void;
+  setElement: (element: Element) => void;
 }
 
-export default function ElementListView({ setShow, setElementId }: ElementListViewProps) {
+export default function ElementListView({ setShow, setElement }: ElementListViewProps) {
   const elements = [
     new Element("Hydrogen", "H", 1, 1, "#34eb49", "#176e96", "#961728"),
     new Element("Helium", "He", 2, 2, "#34eb49", "#176e96", "#961728"),
@@ -26,7 +26,7 @@ export default function ElementListView({ setShow, setElementId }: ElementListVi
       <h1 className="mb-3 text-4xl font-bold text-center">Elements</h1>
       <div className="grid gap-4 md:grid-cols-4 lg:grid-cols-5 sm:grid-cols-3 xs:grid-cols-2">
         {elements.map((element, index) => (
-          <ElementCard key={index} element={element} setElementId={setElementId} setShow={setShow} />
+          <ElementCard key={index} element={element} setElement={setElement} setShow={setShow} />
         ))}
 
         <Button

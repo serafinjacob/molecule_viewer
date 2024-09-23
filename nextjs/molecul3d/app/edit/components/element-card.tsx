@@ -6,16 +6,16 @@ import { PageState } from "../types/page.type";
 
 interface ElementCardProps {
   element: Element;
-  setElementId: (id: number) => void;
+  setElement: (element: Element) => void;
   setShow: (state: PageState) => void;
 }
 
-export default function ElementCard({ element, setElementId, setShow }: ElementCardProps) {
+export default function ElementCard({ element, setElement, setShow }: ElementCardProps) {
   return (
     <Card
       className="flex flex-col p-1.5 cursor-pointer shadow-lg border-none dark:bg-slate-800 bg-slate-300 dark:hover:bg-slate-700 hover:bg-slate-400"
       onClick={() => {
-        setElementId(element.atomicNumber);
+        setElement(element);
         setShow("element");
       }}
     >

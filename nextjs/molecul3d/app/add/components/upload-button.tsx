@@ -7,13 +7,18 @@ export default function UploadButton() {
     <>
       {pending ? (
         <>
-          <Button type="submit" color="indigo" className="rounded-xl px-10 py-2 font-bold" disabled>
+          <Button
+            type="submit"
+            color="indigo"
+            className="rounded-xl px-10 py-2 font-bold bg-transparent border-2"
+            disabled
+          >
             <Spinner color="info" size="md" className="mr-5" />
             <span>Uploading...</span>
           </Button>
         </>
       ) : (
-        <Button type="submit" color="indigo" className="rounded-xl px-10 py-2 font-bold">
+        <Button type="submit" color="indigo" className="rounded-xl px-10 py-2 font-bold bg-transparent border-2">
           Upload
         </Button>
       )}
