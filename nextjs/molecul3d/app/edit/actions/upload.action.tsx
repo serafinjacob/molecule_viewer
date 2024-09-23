@@ -1,8 +1,8 @@
 "use server";
 import { FormState, UploadFormSchema } from "../types/form.types";
 
-import { save } from "./save.actions";
-import { update } from "./update.actions";
+import { save } from "./save.action";
+import { update } from "./update.action";
 
 export async function upload(state: FormState, formData: FormData): Promise<FormState> {
   const validation = UploadFormSchema.safeParse({

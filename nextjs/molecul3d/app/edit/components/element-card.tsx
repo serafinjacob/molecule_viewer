@@ -1,16 +1,9 @@
-import Element from "@/components/Elements";
 import { Card } from "flowbite-react";
 import { IoIosColorPalette } from "react-icons/io";
 import { CiRuler } from "react-icons/ci";
-import { PageState } from "../types/page.type";
+import { ElementListViewProps, ElementProps } from "../types/page.type";
 
-interface ElementCardProps {
-  element: Element;
-  setElement: (element: Element) => void;
-  setShow: (state: PageState) => void;
-}
-
-export default function ElementCard({ element, setElement, setShow }: ElementCardProps) {
+export default function ElementCard({ element, setElement, setShow }: ElementProps & ElementListViewProps) {
   return (
     <Card
       className="flex flex-col flex-grow min-w-fit cursor-pointer border-none shadow-lg dark:bg-slate-800 bg-slate-300 dark:hover:bg-slate-700 hover:bg-slate-400"
