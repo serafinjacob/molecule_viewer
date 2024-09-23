@@ -4,11 +4,33 @@ import Element from "@/components/Elements";
 import ElementCard from "./element-card";
 import CreateButton from "./create-button";
 
+import { useEffect, useState } from "react";
+
 import { getElements } from "../actions/fetch.action";
 
 export default function ElementListView({ setShow, setElement }: ElementListViewProps) {
   // create the elements array
-  let elements: Element[] = [];
+  const [elements, setElements] = useState<Element[]>([]);
+
+  useEffect(() => {
+    getElements().then((data) => {
+      let json = JSON.parse(data);
+
+      setElements(
+        json.map((element: any) => {
+          return new Element(
+            element.element_name,
+            element.element_code,
+            element.element_no,
+            element.radius,
+            element.colour1.charAt(0) === "#" ? element.colour1 : "#" + element.colour1,
+            element.colour2.charAt(0) === "#" ? element.colour2 : "#" + element.colour2,
+            element.colour3.charAt(0) === "#" ? element.colour3 : "#" + element.colour3
+          );
+        })
+      );
+    });
+  }, []);
 
   return (
     <div className="flex flex-col w-full justify-center">
