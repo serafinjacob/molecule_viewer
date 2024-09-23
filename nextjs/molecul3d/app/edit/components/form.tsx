@@ -1,6 +1,6 @@
 "use client";
 import { PageState } from "../types/page.type";
-import { FloatingLabel, Button } from "flowbite-react";
+import { FloatingLabel, Button, Alert } from "flowbite-react";
 import Element from "@/components/Elements";
 import { useState, useRef } from "react";
 
@@ -71,8 +71,11 @@ export default function Form({ element, setShow }: FormProps) {
             value={initialElement.atomicNumber ? initialElement.atomicNumber : 0}
             onChange={updateElement}
           />
+
           {updating ? (
-            <p className="text-yellow-400 m-2">Atomic Number cannot be changed when updating an element.</p>
+            <Alert color="warning" className="m-2">
+              <span className="text-xs cursor-default">Atomic number can not be changed when updating an element.</span>
+            </Alert>
           ) : null}
           {state?.errors?.atomicNumber && <p className="text-red-500 m-2">{state.errors.atomicNumber}</p>}
 
@@ -95,7 +98,7 @@ export default function Form({ element, setShow }: FormProps) {
             type="color"
             color={state?.errors?.color1 ? "error" : "default"}
             variant="filled"
-            className="rounded-xl h-12 mb-[-26px]"
+            className="rounded-xl h-12 mb-[-26px] cursor-pointer"
             name="element-color1"
             value={initialElement.color1 ? initialElement.color1 : ""}
             onChange={updateElement}
@@ -107,7 +110,7 @@ export default function Form({ element, setShow }: FormProps) {
             type="color"
             color={state?.errors?.color2 ? "error" : "default"}
             variant="filled"
-            className="rounded-xl h-12 mb-[-26px]"
+            className="rounded-xl h-12 mb-[-26px] cursor-pointer"
             name="element-color2"
             value={initialElement.color2 ? initialElement.color2 : ""}
             onChange={updateElement}
@@ -119,7 +122,7 @@ export default function Form({ element, setShow }: FormProps) {
             type="color"
             variant="filled"
             color={state?.errors?.color3 ? "error" : "default"}
-            className="rounded-xl h-12 mb-[-16px]"
+            className="rounded-xl h-12 mb-[-16px] cursor-pointer"
             name="element-color3"
             value={initialElement.color3 ? initialElement.color3 : ""}
             onChange={updateElement}
