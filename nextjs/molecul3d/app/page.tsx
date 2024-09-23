@@ -4,7 +4,7 @@ import type { CustomFlowbiteTheme } from "flowbite-react";
 
 export default function Home() {
   return (
-    <div className="flex flex-grow flex-col items-center justify-start justify-items-center w-full h-full m-auto cursor-default select-none">
+    <div className="flex flex-grow flex-col items-center justify-start justify-items-center w-full h-full mx-auto cursor-default select-none">
       <section className="h-fit w-full">
         <div className="mx-auto grid max-w-screen-xl px-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
           <div className="m-auto place-self-center lg:col-span-7 text-center lg:text-left">
@@ -28,7 +28,7 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <div className="hidden lg:col-span-5 lg:mt-0 lg:flex"></div>
+          <div className="hidden lg:col-span-5 lg:mt-0 lg:flex">..Image goes here..</div>
         </div>
       </section>
 

@@ -6,7 +6,7 @@ import { HelpContainerProps, ReferenceProps, SectionProps } from "./types";
 export default function HelpContainer({ sections }: HelpContainerProps) {
   const [show, setShow] = useState(false);
   return (
-    <div className={`relative p-4 m-5 ${show ? "rounded-lg bg-gray-100 dark:bg-gray-700 " : ""}`}>
+    <div className={`relative p-4 ${show ? "rounded-xl bg-gray-100 dark:bg-gray-700 " : ""}`}>
       <div className={`absolute text-gray-400 ${show ? "right-4" : "left-0"}`}>
         <TbHelp className="text-3xl cursor-pointer" onClick={() => setShow(!show)} />
       </div>

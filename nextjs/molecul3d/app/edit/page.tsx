@@ -13,7 +13,7 @@ export default function Page() {
   const [element, setElement] = useState<Element | null>(null);
 
   return (
-    <div className="h-full w-full bg-gray-100 dark:bg-transparent rounded-xl p-10 pt-5">
+    <div className="h-full w-full bg-gray-100 dark:bg-transparent rounded-xl p-10">
       {show === "list" && <ElementListView setShow={setShow} setElement={setElement} />}
       {show === "element" && <EditElement setShow={setShow} element={element} />}
       {show === "add" && <AddElement setShow={setShow} />}

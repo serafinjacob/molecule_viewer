@@ -63,10 +63,15 @@ export default function Form({ element, setShow }: FormProps) {
         </div>
       </div>
       <div className="flex flex-row w-full justify-center gap-4">
-        <Button color="indigo" className="rounded-xl p-2" title="Edit Element">
+        <Button color="indigo" className="rounded-xl p-2 bg-transparent border-2" title="Edit Element">
           Save
         </Button>
-        <Button color="red" className="rounded-xl p-2" title="Cancel" onClick={() => setShow("list")}>
+        <Button
+          color="red"
+          className="rounded-xl p-2 bg-transparent border-2 "
+          title="Cancel"
+          onClick={() => setShow("list")}
+        >
           Cancel
         </Button>
       </div>
