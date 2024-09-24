@@ -19,19 +19,19 @@ export async function upload(state: FormState, formData: FormData): Promise<Form
     return { errors: validation.error.flatten().fieldErrors };
   }
 
-  let { name, symbol, atomicNumber, radius, color1, color2, color3 } = validation.data;
+  const { name, symbol, atomicNumber, radius } = validation.data;
+  let { color1, color2, color3 } = validation.data;
 
   color1 = color1.replace("#", "");
   color2 = color2.replace("#", "");
   color3 = color3.replace("#", "");
-
   const form_name = formData.get("element-form-name") as string;
 
   if (form_name === "update") {
     const update_result = await update({ name, symbol, atomicNumber, radius, color1, color2, color3 });
 
     if (update_result.success) {
-      return { success: "Element updated" };
+      return { success: "Element updated. " };
     }
 
     if (update_result.error) {
