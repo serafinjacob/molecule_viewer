@@ -1,5 +1,3 @@
-import { useState } from "react";
-import Element from "@/components/Elements";
 import { PageState } from "../types/page.type";
 import Form from "./form";
 

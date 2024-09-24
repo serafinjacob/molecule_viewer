@@ -15,7 +15,7 @@ interface FormProps {
 }
 
 export default function Form({ element, setShow }: FormProps) {
-  const [updating, setUpdating] = useState(element ? true : false);
+  const [updating] = useState(element ? true : false);
 
   const [initialElement, setInitialElement] = useState<Element>(
     element ? element : new Element("", "", 0, 0, "", "", "")

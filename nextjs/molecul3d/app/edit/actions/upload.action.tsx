@@ -19,7 +19,7 @@ export async function upload(state: FormState, formData: FormData): Promise<Form
     return { errors: validation.error.flatten().fieldErrors };
   }
 
-  var { name, symbol, atomicNumber, radius, color1, color2, color3 } = validation.data;
+  let { name, symbol, atomicNumber, radius, color1, color2, color3 } = validation.data;
 
   color1 = color1.replace("#", "");
   color2 = color2.replace("#", "");

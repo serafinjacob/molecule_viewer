@@ -66,7 +66,7 @@ export default function ViewPage() {
   };
 
   return (
-    <div className="m-5">
+    <div className="flex flex-col w-full h-full m-10 gap-10">
       {showList ? (
         <ListViewPage molecules={molecules} setMolecule={handleSetMolecule} />
       ) : (
@@ -88,67 +88,6 @@ export default function ViewPage() {
           </div>
         </>
       )}
-      {molecule}
     </div>
   );
 }
-
-/*const getMolecules = () => {
-    fetch("http://localhost/molecule")
-      .then((res) => res.json())
-      .then((data) => {
-        data.forEach((molecule) => {
-          Molecules.push(molecule);
-        });
-      });
-  };
-
-  const getMolecule = (id) => {
-    fetch(`http://localhost/molecule/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  };
-
-  const addMolecule = (name, file) => {
-    const formData = new FormData();
-    formData.append("file", file);
-    fetch("http://localhost/molecule", {
-      method: "POST",
-      body: formData,
-    }).then((res) => {
-      if (res.ok) {
-        console.log("File uploaded successfully.");
-      } else {
-        console.log("Error uploading file.");
-      }
-    });
-  };
-
-  const deleteMolecule = (id) => {
-    fetch(`http://localhost/molecule/${id}`, {
-      method: "DELETE",
-    }).then((res) => {
-      if (res.ok) {
-        console.log("Molecule deleted successfully.");
-      } else {
-        console.log("Error deleting molecule.");
-      }
-    });
-  };
-
-  const updateMolecule = (id, name, file) => {
-    const formData = new FormData();
-    formData.append("file", file);
-    fetch(`http://localhost/molecule/${id}`, {
-      method: "PUT",
-      body: formData,
-    }).then((res) => {
-      if (res.ok) {
-        console.log("Molecule updated successfully.");
-      } else {
-        console.log("Error updating molecule.");
-      }
-    });
-  };*/

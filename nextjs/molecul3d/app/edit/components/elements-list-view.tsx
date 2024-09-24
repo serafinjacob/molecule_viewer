@@ -8,16 +8,26 @@ import { useEffect, useState } from "react";
 
 import { getElements } from "../actions/fetch.action";
 
+interface ElementReturn {
+  element_name: string;
+  element_code: string;
+  element_no: number;
+  radius: number;
+  colour1: string;
+  colour2: string;
+  colour3: string;
+}
+
 export default function ElementListView({ setShow, setElement }: ElementListViewProps) {
   // create the elements array
   const [elements, setElements] = useState<Element[]>([]);
 
   useEffect(() => {
     getElements().then((data) => {
-      let json = JSON.parse(data);
+      const json = JSON.parse(data);
 
       setElements(
-        json.map((element: any) => {
+        json.map((element: ElementReturn) => {
           return new Element(
             element.element_name,
             element.element_code,
